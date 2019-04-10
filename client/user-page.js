@@ -1,25 +1,32 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
 const UserPage = (props) => {
   const {handleClick} = props
+  const {user} = props
 
-  return (
-    <div className='h100 w100 flex column align-items-center justify-center'>
-      <div className='flex'>
-        <img className='rounded mr1' />
-        <h1>Welcome back!</h1>
+  if(user.id){
+    return (
+      <div className='h100 w100 flex column align-items-center justify-center'>
+        <div className='flex'>
+          <img src={props.user.imageUrl} className='rounded mr1' />
+          <h1>Welcome back! {user.email}</h1>
+        </div>
+        <div>
+          <button className='btn bg-red white p1 rounded' onClick={handleClick}>Logout</button>
+        </div>
       </div>
-      <div>
-        <button className='btn bg-red white p1 rounded' onClick={handleClick}>Logout</button>
-      </div>
-    </div>
-  )
+    )
+  }else{
+    <Redirect to='/' />
+  }
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
     // your code here
+    user:state.user
   }
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {login} from './store'
 
 const Login = (props) => {
   const {handleSubmit} = props
@@ -39,6 +40,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     handleSubmit (evt) {
       evt.preventDefault()
       // your code here!
+      
+    dispatch(login({
+        email:evt.target.email.value,
+        password:evt.target.password.value
+      }))
+      .then(() => {
+        history.push('/home')
+      })
     }
   }
 }
