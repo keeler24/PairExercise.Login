@@ -37,6 +37,18 @@ export const login = formData => {
       .catch(error => console.log(error));
 };
 
+export const logout = () =>{
+  return dispatch => (
+    axios.delete('/auth/logout')
+      .then(resp =>{
+        dispatch(getLoggedInUser({}))
+      })
+      .catch(console.error.bind(console))
+  )
+}
+
+
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_USER:

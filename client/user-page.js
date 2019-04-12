@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import {logout} from './store'
 
 const UserPage = props => {
   const { handleClick } = props;
@@ -40,7 +41,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
     handleClick() {
-      // your code here
+      console.log('asdfahsdfklhasdjklfhklasdhf')
+      dispatch(logout())
     },
   };
 };
