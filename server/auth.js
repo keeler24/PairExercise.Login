@@ -43,3 +43,8 @@ router.get('/me', (req, res, next) => {
     res.sendStatus(404);
   }
 });
+
+router.delete('/logout', (req, res, next) => {
+  req.session.destroy();
+  res.sendStatus(204);
+});
